@@ -1,0 +1,30 @@
+
+setup_conda_env(){
+    mkdir -p ~/tmp
+    cd ~/tmp
+    CONDA_INSTALL_SCRIPT=Miniconda3-latest-Linux-x86_64.sh
+    curl https://repo.continuum.io/miniconda/$CONDA_INSTALL_SCRIPT > $CONDA_INSTALL_SCRIPT
+    chmod +x $CONDA_INSTALL_SCRIPT 
+
+    # Install miniconda to user local directory
+    _CONDA_ROOT=$HOME/.local/conda
+    sh $CONDA_INSTALL_SCRIPT -b -p $_CONDA_ROOT
+
+    source $_CONDA_ROOT/etc/profile.d/conda.sh
+
+    conda update -y -n base conda
+    conda create -y -n py38 python=3.8
+    #conda create -y -n py37 python=3.7
+    #conda create -y -n py36 python=3.6
+    conda activate py38
+    #conda remove --name py36 --all
+    
+    
+    __addme_to_bashrc__="
+      _CONDA_ROOT=$HOME/.local/conda
+      source $_CONDA_ROOT/etc/profile.d/conda.sh
+      conda activate py38
+    "
+
+}
+
