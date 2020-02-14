@@ -141,7 +141,39 @@ pyfile()
     python -c "import $1; print($1.__file__.replace(\".pyc\", \".py\"))"
 }
 
-    
+alias s='git status'
+alias b='git branch'
+alias r='git branch -r'
+alias gcwip='git commit -am "wip" && git push'
+alias gp='git pull'
+
+alias rrr='source ~/.bashrc'
+
+alias cgrep='grep -I -ER \
+    --exclude-dir "build" \
+    --exclude-dir "cmake-build" \
+    --exclude-dir "build-*" \
+    --exclude-dir "build_*" \
+    --exclude-dir "node_modules" \
+    --exclude-dir "static" \
+    --exclude-dir .git \
+    --exclude-dir .pytest_cache \
+    --exclude-dir htmlcov \
+    --exclude-dir "volumes" \
+    --exclude-dir "*.egg-info" \
+    --exclude "searchindex.js" \
+    --exclude "*.dot*" \
+    --exclude "*.rst*" \
+    --exclude "profile_output.*" \
+    --exclude "*.pipe*" \
+    --exclude "*.zip*" \
+    --exclude "*.pkl*" \
+    --exclude "*.pyc*" \
+    --exclude "*.so*" \
+    --exclude "*.o*" \
+    --exclude "*.coverage*" \
+    --exclude "tags"'
+
 
 conda activate campy3
 
