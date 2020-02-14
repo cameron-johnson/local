@@ -175,5 +175,14 @@ alias cgrep='grep -I -ER \
     --exclude "tags"'
 
 
+if [ -d "$HOME/.local/conda/envs/py38" ]; then
+conda activate py38
+elif [ -d "$HOME/.local/conda/envs/py37" ]; then
+conda activate py37
+elif [ -d "$HOME/.local/conda/envs/py36" ]; then
+conda activate py36
+elif [ -d "$HOME/.local/conda/envs/campy3" ]; then
 conda activate campy3
+fi
+
 
