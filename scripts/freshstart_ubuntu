@@ -27,4 +27,5 @@ setup_conda_env(){
     "
 
 }
+setup_conda_env
 
