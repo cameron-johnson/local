@@ -136,3 +136,4 @@ source $HOME/.vim/bundle/vimtk/plugin/vimtk.vim
 "call vimtk#quickopen(',', '~/.vimrc')
 "call vimtk#quickopen('5', '~/.bashrc')
 
+let g:syntastic_python_checkers = ['flake8']
