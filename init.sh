@@ -2,7 +2,11 @@
 
 source $HOME/local/utils.sh
 
-safe_symlink $HOME/local/dotfiles/.vimrc $HOME/.vimcrc
+if [ ! -f "~/.vim/autoload/plug.vim" ]; then
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+safe_symlink $HOME/local/dotfiles/.vimrc $HOME/.vimrc
 safe_symlink $HOME/local/dotfiles/.bashrc $HOME/.bashrc
 
 

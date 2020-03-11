@@ -174,6 +174,32 @@ alias cgrep='grep -I -ER \
     --exclude "*.coverage*" \
     --exclude "tags"'
 
+_CONDA_ROOT=$HOME/.local/conda
+source $_CONDA_ROOT/etc/profile.d/conda.sh
 
+
+if [ -d "$HOME/.local/conda/envs/py38" ]; then
+conda activate py38
+elif [ -d "$HOME/.local/conda/envs/py37" ]; then
+conda activate py37
+elif [ -d "$HOME/.local/conda/envs/py36" ]; then
+conda activate py36
+elif [ -d "$HOME/.local/conda/envs/campy3" ]; then
 conda activate campy3
+fi
 
+
+slurm_submit(){
+     __heredoc__='''
+     normalize the way to call srun vs sbatch
+     '''
+     FUNC_ARGS=( "$@" )
+     WRAPPED=$(printf "%s "  "${FUNC_ARGS[@]}")
+     echo "SUBMIT COMMAND: \"$WRAPPED\""
+
+     # $WRAPPED # to run on a non-slurm machine
+     # sbatch -c 4 -p priority --gres=gpu:1 --wrap="$WRAPPED" # CL-output in background
+     srun -c 4 -p community --gres=gpu:1 $@ # CL-output in terminal (preferred)
+     # -c = num cpus, --gres=gpu:1 means we need 1 gpu
+     # "priority", "vigilant", "community"
+}
