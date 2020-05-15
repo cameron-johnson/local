@@ -9,7 +9,7 @@ Example:
 Notes:
     sshfs -o follow_symlinks,idmap=user remote1: ~/remote/remote1
     fusermount -u ~/remote/remote1
-    mkdir -p ~/remote/videonas2/other
+    mkdir -p ~/remote/videonas/other
     sudo mount -t cifs -o dir_mode=0777,file_mode=0777 -o username=cameron.johnson //videonas/other ~/remote/videonas/other
     sudo umount ~/remote/videonas/other
 CommandLine:
